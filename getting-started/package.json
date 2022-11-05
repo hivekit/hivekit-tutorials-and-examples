@@ -1,0 +1,12 @@
+{
+  "name": "getting-started",
+  "version": "0.0.0",
+  "description": "The files accompanying https://hivekit.io/tutorials-and-examples/getting-started/",
+  "main": "index.js",
+  "author": "Hivekit Inc.",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@hivekit/client-js": "^1.2.0"
+  }
+}
