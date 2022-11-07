@@ -7,6 +7,7 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "@hivekit/client-js": "^1.2.0"
+    "@hivekit/client-js": "^1.2.0",
+    "jsonwebtoken": "^8.5.1"
   }
 }
