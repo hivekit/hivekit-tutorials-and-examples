@@ -29,6 +29,7 @@ await realm.object.create('scooter/a14', {
     data: {
         // this scooter's battery has 50% charge
         charge: 0.5,
+        type: 'scooter',
 
         // data properties starting with $hkt for "hivekit" tell the admin dashboard how do display things
         $hkt_icon: {
@@ -39,7 +40,7 @@ await realm.object.create('scooter/a14', {
     }
 });
 
-// ok, let's slowly move our object north
+//ok, let's slowly move our object north
 var lat = 52.524;
 setInterval(async () => {
     lat += 0.001; // by 0.001 degree every half second
@@ -75,4 +76,17 @@ realm.area.create('alexanderplatz', {
         // tell the admin dashboard to show this area in purple
         $hkt_color: '#c546ec'
     }
+})
+
+// Finally, we'll create an instruction that changes the area's color, based on whether a scooter is in it
+realm.instruction.create('highligh-area-with-scooter', {
+    label: 'Changes an areas color to green if there is at least one scooter in it',
+    instructionString: `
+    when
+        area().containing(type=scooter)
+    then
+        set($hkt_color, \\#62ec46)
+    until
+        set($hkt_color, \\#c546ec) 
+    `
 })
