@@ -40,17 +40,17 @@ await realm.object.create('scooter/a14', {
     }
 });
 
-//ok, let's slowly move our object north
-var lat = 52.524;
-setInterval(async () => {
-    lat += 0.001; // by 0.001 degree every half second
-    await realm.object.update('scooter/a14', {
-        location: {
-            latitude: lat,
-            longitude: 13.385
-        }
-    })
-}, 500);
+// ok, let's slowly move our object north
+// var lat = 52.524;
+// setInterval(async () => {
+//     lat += 0.001; // by 0.001 degree every half second
+//     await realm.object.update('scooter/a14', {
+//         location: {
+//             latitude: lat,
+//             longitude: 13.385
+//         }
+//     })
+// }, 500);
 
 // to see these object updates on any connected client, you can subscribe
 const subscription = await realm.object.subscribe();

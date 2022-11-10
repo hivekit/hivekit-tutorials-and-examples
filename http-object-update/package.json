@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "needle": "^3.1.0"
+  }
+}
