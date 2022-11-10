@@ -3,17 +3,17 @@ import jwt from 'jsonwebtoken'
 
 const method = 'post';
 const url = 'http://localhost:8090/api/v1';
-const data = [{
-    typ: 'obj',
-    act: 'set',
-    id: 'deliveryRiders/johndoe-123',
-    rea: 'berlin',
+const data = [{ // every message is an array of actions
+    typ: 'obj', // type = object
+    act: 'set', // action = set (UPSERT without write confirmation)
+    id: 'deliveryRiders/johndoe-123', // id for the object
+    rea: 'berlin', // id for the realm
     loc: { // location
-        lon: 13.414677,
-        lat: 52.525407
+        lon: 13.414677, // longitude
+        lat: 52.525407 // latitude
     },
     dat: {// charge
-        charge: 0.3
+        charge: 0.3 // arbitrary data
     }
 }];
 const tokenData = {
