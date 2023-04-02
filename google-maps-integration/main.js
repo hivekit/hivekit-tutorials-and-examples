@@ -74,46 +74,41 @@ async function createMapSubscription() {
     const realm = await client.realm.get(realmId);
 
     mapSubscription = await realm.object.subscribe({
+        executeImmediately: true,
         shape: map.getBounds().toJSON()
     })
 
     mapSubscription.on('update', updateMapMarkers)
 
-    createTestObjects(realm);
+    //createTestObjects(realm);
 }
 
 // Each object in the realm will be represented by a map marker that updates its
 // position whenever the object moves. We'll keep a map of object id to map marker here
 const markers = {};
 
-function updateMapMarkers(objects) {
-    // first, we iterate through the list of objects that are within the subscribed radius.
-    for (let id in objects) {
-        let position = new google.maps.LatLng(objects[id].location.latitude, objects[id].location.longitude)
-
-        if (markers[id]) {
-            // we have the marker already
-            if (!markers[id].position.equals(position)) {
-                // update if position has changed
-                markers[id].setPosition(position)
-            }
-        } else {
-            // we don't have a marker representing this object yet. Let's create one
-            markers[id] = new google.maps.Marker({
-                position: position,
-                map: map,
-                title: objects[id].label,
-            });
-        }
+function updateMapMarkers(fullState, changes) {
+    var id, obj;
+    // add new markers
+    for (id in changes.added) {
+        obj = changes.added[id];
+        markers[id] = new google.maps.Marker({
+            position: new google.maps.LatLng(obj.location.latitude, obj.location.longitude),
+            map: map,
+            title: obj.label,
+        });
     }
 
-    // lastly, let's iterate through the map of markers we already have
-    // and see which ones are no longer part of the subscription
-    for (let id in markers) {
-        if (!objects[id]) {
-            markers[id].setMap(null);
-            delete markers[id];
-        }
+    // update existing markers
+    for (id in changes.updated) {
+        obj = changes.added[id];
+        markers[id].setPosition(new google.maps.LatLng(obj.location.latitude, obj.location.longitude))
+    }
+
+    // delete removed markers
+    for (id in changes.removed) {
+        markers[id].setMap(null);
+        delete markers[id];
     }
 }
 
