@@ -44,14 +44,15 @@ export default class MarkerRenderer extends google.maps.OverlayView {
         this.canvas.style.position = 'absolute';
         this.canvas.style.top = 0;
         this.canvas.style.left = 0;
-        this.canvas.style.width = '100%';
-        this.canvas.style.height = '100%';
+        this.canvas.style.width = this.parentMap.config.containerElement.offsetWidth + 'px';
+        this.canvas.style.height = this.parentMap.config.containerElement.offsetHeight + 'px';
         this.canvas.style.pointerEvents = 'none';
         this.canvas.style.zIndex = 2;
-        this.parentMap.config.containerElement.appendChild(this.canvas);
+        this.getPanes().floatPane.parentNode.parentNode.appendChild(this.canvas);
         this.ctx = this.canvas.getContext('2d');
         this.onMouseMoveFn = this.onMouseMove.bind(this);
         this.onClickFn = this.onClick.bind(this);
+
         window.addEventListener('mousemove', this.onMouseMoveFn, true);
         window.addEventListener('click', this.onClickFn, true);
     }

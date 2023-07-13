@@ -47,6 +47,7 @@ export default class Map {
             zoom: this.config.mapZoom,
             center: this.config.mapCenter,
             minZoom: this.config.mapMinZoom,
+            gestureHandling: 'cooperative'
         });
 
         this.hivekitClient = new HivekitClient();

@@ -20,10 +20,10 @@ const map = new Map({
     selectionRectangleSize: 35,
 
     // the initial zoom level of the map
-    mapZoom: 5,
+    mapZoom: 3,
 
     // the minimum zoom level of the map
-    mapMinZoom: 3,
+    mapMinZoom: 2,
 
     // the initial center of the map
     mapCenter: {
