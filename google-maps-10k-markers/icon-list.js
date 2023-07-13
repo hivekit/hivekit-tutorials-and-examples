@@ -1,3 +1,7 @@
+/**
+ * A list of icon ids in the same
+ * order as they are ordered in the sprite sheet.
+ */
 export default [
     'apache-helicopter',
     'atv',
