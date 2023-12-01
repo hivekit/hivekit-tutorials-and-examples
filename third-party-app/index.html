@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Third Party App Integration Example</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="outer">
+        <div class="btn-row">
+            <div class="btn" @click="panToEiffelTower">Pan to Eiffeltower</div>
+            <div class="explanation code">
+                app.map.panTo(48.8584, 2.2945);
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="main.js" type="module"></script>
+</body>
+
+</html>
