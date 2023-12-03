@@ -5,20 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Third Party App Integration Example</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="outer">
-        <div class="btn-row">
+    <ul class="outer">
+        <li class="heading">
+            <h2>Initialisation</h2>
+        </li>
+        <li class="example">
+            <pre><code class="language-js">const app = new ExternalAppControl();</code></pre>
+        </li>
+        <li class="heading">
+            <h2>Map</h2>
+        </li>
+        <li class="example">
             <div class="btn" @click="panToEiffelTower">Pan to Eiffeltower</div>
-            <div class="explanation code">
-                app.map.panTo(48.8584, 2.2945);
+            <pre><code class="language-js">app.map.panTo(48.8584, 2.2945);</code></pre>
+        </li>
+        <li class="example">
+            <div class="btn" @click="panToEntity()">Pan to Entity</div>
+            <pre><code class="language-js">app.map.panToEntity(
+    'object', // 'object', 'area','task' 
+    'object-G_Ic4zx2FM2Ebz6VeW9qC' //id
+);</code></pre>
+        </li>
+        <li class="heading">
+            <h2>Selection</h2>
+        </li>
+        <li class="example">
+            <div class="event-log">
+                <h2>Selection:</h2>
+                <ul>
+                    <li v-for="line in selections">
+                        <label>Type:</label> {{ line.type || 'null' }}, <label>ID:</label> {{ line.id || 'null' }}
+                    </li>
+                </ul>
             </div>
-        </div>
-    </div>
+            <pre><code class="language-js">app.selection.on('change', (type, id) => {
+    // no selection = null, null
+    // type will be 'object', 'area', 'instruction', 'task'
+    // id will be the id of the selected type
+});</code></pre>
+        </li>
+        <li class="example">
+            <div class="left">
+                <div class="btn" @click="getSelection">Get Selection</div>
+                <div>Type: {{ selectedType || 'null' }}</div>
+                <div>ID: {{ selectedId || 'null' }}</div>
+            </div>
+
+            <pre><code class="language-js">app.selection.get();</code></pre>
+        </li>
+        <li class="example">
+            <div class="btn" @click="select()">Select</div>
+            <pre><code class="language-js">app.selection.select(
+    'object',
+    'object-G_Ic4zx2FM2Ebz6VeW9qC' //id
+);</code></pre>
+        </li>
+        <li class="example">
+            <div class="btn" @click="unselect()">Unselect</div>
+            <pre><code class="language-js">app.selection.unselect();</code></pre>
+        </li>
+        <li class="heading">
+            <h2>App Window</h2>
+        </li>
+        <li class="example">
+            <div class="btn" @click="setAppWindowSize()">Set App Window Size</div>
+            <pre><code class="language-js">app.appWindow.setSize(400, 200);</code></pre>
+        </li>
+        <li class="example">
+            <div class="btn" @click="closeAppWindow()">Close App Window</div>
+            <pre><code class="language-js">app.appWindow.close();</code></pre>
+        </li>
+    </ul>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="main.js" type="module"></script>
 </body>
 
