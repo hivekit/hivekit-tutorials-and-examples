@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@hivekit/client-js": "^1.10.5",
+    "jose": "^5.2.4"
+  }
+}

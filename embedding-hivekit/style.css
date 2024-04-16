@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+#app-container>iframe {
+    flex: 1;
+    border: none;
+    background: green;
+}
+
+#app-container .my-app {
+    width: 300px;
+    background-color: #333;
+    padding: 20px;
+
+}
+
+#app-container .my-app * {
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#app-container .my-app ul li {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    background: #444;
+    margin: 5px 0;
+    border: 1px solid #555;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+#app-container .my-app ul li:hover {
+    background: #555;
+}
+
+#app-container .my-app ul li.selected {
+    background: #1e8f8f;
+}
