@@ -11,6 +11,11 @@
     nanoid "^3.1.30"
     ws "^8.2.3"
 
+"@hivekit/external-app-control@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@hivekit/external-app-control/-/external-app-control-0.0.1.tgz#cfccdf35527fa6bf9a9505fc6fddea9509681fc9"
+  integrity sha512-8FFcsk5Q3cYIUNj4nZYpRqn+W6dt5JXGIQS1q7EaAuCKWTiM5/vWHbR50JGfkB3rsv+kMsx54uiunO3IaJ27vw==
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"

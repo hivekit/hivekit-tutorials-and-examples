@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@hivekit/client-js": "^1.10.5",
+    "@hivekit/external-app-control": "^0.0.1",
     "jose": "^5.2.4"
   }
 }
