@@ -48,7 +48,7 @@ new Vue({
         this.realm = await this.hivekitClient.realm.get(realmId);
         this.subscription = await this.realm.object.subscribe({ executeImmediately: true })
         this.subscription.on('update', objects => {
-            this.$data.objects = objects;
+            this.$data.objects = structuredClone(objects);// Clone the objects to avoid reactivity issues
         });
 
         // Connect the ExternalAppControl to the iframe
